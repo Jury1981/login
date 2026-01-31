@@ -141,7 +141,8 @@ describe('AzureCliLogin', () => {
             const args: string[] = ['--identity'];
             await azureCliLogin.loginWithUserAssignedIdentity(args);
 
-            // parseInt on undefined should return NaN, which is < 69, so --username should be used
+            // When split('.')[1] is undefined, parseInt returns NaN, which is handled and set to 0
+            // Since 0 < 69, --username should be used
             expect(args).toContain('--username');
             expect(args).toContain('test-client-id');
         });
