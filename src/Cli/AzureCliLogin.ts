@@ -117,6 +117,10 @@ export class AzureCliLogin {
         let azcliMinorVersion = 0;
         try {
             azcliMinorVersion = parseInt(this.azVersion.split('.')[1], 10);
+            if (isNaN(azcliMinorVersion)) {
+                core.warning("Failed to parse the minor version of Azure CLI. Assuming the version is less than 2.69.0");
+                azcliMinorVersion = 0;
+            }
         }
         catch (error) {
             core.warning("Failed to parse the minor version of Azure CLI. Assuming the version is less than 2.69.0");
