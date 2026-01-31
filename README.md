@@ -693,6 +693,36 @@ Refer to the [Azure CLI](https://github.com/azure/cli) GitHub Action to run your
 
 Refer to the [Azure PowerShell](https://github.com/azure/powershell) GitHub Action to run your Azure PowerShell scripts.
 
+## Development
+
+### Dev Container Support
+
+This repository includes a [Dev Container](https://containers.dev/) configuration for streamlined development with Azure tools and GNU utilities.
+
+The dev container provides:
+
+- **Pre-configured Azure CLI** - Latest version, ready to use
+- **PowerShell** - Cross-platform PowerShell for Azure PowerShell modules
+- **Node.js 20** - With all dependencies auto-installed
+- **GitHub CLI** - For workflow and action testing
+- **GNU Core Utilities** - Complete Unix toolchain (bash, grep, sed, awk, etc.)
+
+#### Getting Started with Dev Containers
+
+**Using VS Code:**
+
+1. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+2. Open this repository in VS Code
+3. Click "Reopen in Container" when prompted
+
+**Using GitHub Codespaces:**
+
+1. Click the "Code" button on GitHub
+2. Select "Codespaces" tab
+3. Click "Create codespace"
+
+For more details, see [.devcontainer/README.md](.devcontainer/README.md).
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
