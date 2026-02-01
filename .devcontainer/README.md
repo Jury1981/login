@@ -37,7 +37,13 @@ This development container provides a pre-configured environment for developing 
 
 ### Optimized for Development
 
-- **Persistent Azure credentials**: Your `~/.azure` folder is mounted, so you don't need to login repeatedly
+- **Persistent Azure credentials** (optional): You can mount your `~/.azure` folder by adding this to `.devcontainer/devcontainer.json`:
+  ```json
+  "mounts": [
+    "source=${localEnv:HOME}/.azure,target=/home/node/.azure,type=bind,consistency=cached"
+  ]
+  ```
+  Note: This requires the `HOME` environment variable on your host system (Linux/Mac). Windows users should use `${localEnv:USERPROFILE}/.azure` instead.
 - **Auto-install dependencies**: `npm install` runs automatically on container creation
 - **Consistent environment**: Everyone uses the same tool versions
 
@@ -70,19 +76,19 @@ The dev container includes a helper script that streamlines common tasks:
 
 ### Manual Commands
 
-### Build the Action
+#### Build the Action
 
 ```bash
 npm run build
 ```
 
-### Run Tests
+#### Run Tests
 
 ```bash
 npm test
 ```
 
-### Test Azure CLI
+#### Test Azure CLI
 
 ```bash
 az version
@@ -90,7 +96,7 @@ az login  # If needed
 az account show
 ```
 
-### Test PowerShell
+#### Test PowerShell
 
 ```bash
 pwsh
@@ -118,7 +124,13 @@ To add more features, edit `.devcontainer/devcontainer.json` and add features fr
 
 ### Azure credentials not persisting
 
-Make sure the `~/.azure` folder exists on your host machine before starting the container.
+By default, Azure credentials are not persisted between container rebuilds. To persist credentials:
+
+1. Add a mount configuration to `.devcontainer/devcontainer.json`:
+   - **Linux/Mac**: `"source=${localEnv:HOME}/.azure,target=/home/node/.azure,type=bind,consistency=cached"`
+   - **Windows**: `"source=${localEnv:USERPROFILE}/.azure,target=/home/node/.azure,type=bind,consistency=cached"`
+2. Make sure the `.azure` folder exists on your host machine before starting the container
+3. Rebuild the container
 
 ### Container build fails
 
