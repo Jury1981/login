@@ -22,6 +22,7 @@
     - [Enable/Disable the cleanup steps](#enabledisable-the-cleanup-steps)
   - [Security hardening](#security-hardening)
   - [Azure CLI dependency](#azure-cli-dependency)
+  - [Development](#development)
   - [Reference](#reference)
     - [GitHub Action](#github-action)
     - [GitHub Actions for deploying to Azure](#github-actions-for-deploying-to-azure)
