@@ -33,9 +33,6 @@
   },
   "postCreateCommand": "npm install && chmod +x .devcontainer/dev.sh",
   "remoteUser": "node",
-  "mounts": [
-    "source=${localEnv:HOME}/.azure,target=/home/node/.azure,type=bind,consistency=cached"
-  ],
   "forwardPorts": [],
   "portsAttributes": {},
   "containerEnv": {
