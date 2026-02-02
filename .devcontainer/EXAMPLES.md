@@ -94,6 +94,7 @@ For local development, use the dev container directly:
 2. Install the "Dev Containers" extension
 3. Click "Reopen in Container"
 4. Run commands:
+
    ```bash
    # Quick development workflow
    .devcontainer/dev.sh dev
