@@ -248,6 +248,21 @@ describe("LoginConfig Test", () => {
         testValidateWithErrorMessage(loginConfig, "Ensure 'subscription-id' is supplied or 'allow-no-subscriptions' is 'true'.");
     });
 
+    test('validate with azurestack without resourceManagerEndpointUrl', async () => {
+        setEnv('environment', 'azurestack');
+        setEnv('enable-AzPSSession', 'false');
+        setEnv('allow-no-subscriptions', 'true');
+        setEnv('auth-type', 'SERVICE_PRINCIPAL');
+
+        setEnv('tenant-id', 'tenant-id');
+        setEnv('subscription-id', 'subscription-id');
+        setEnv('client-id', 'client-id');
+
+        let loginConfig = new LoginConfig();
+        await loginConfig.initialize();
+        testValidateWithErrorMessage(loginConfig, "Using environment: azurestack. Ensure 'resourceManagerEndpointUrl' is supplied.");
+    });
+
     test('validate without subscriptionId and allowNoSubscriptionsLogin=true', async () => {
         setEnv('environment', 'azurestack');
         setEnv('enable-AzPSSession', 'true');
@@ -255,6 +270,7 @@ describe("LoginConfig Test", () => {
         setEnv('auth-type', 'IDENTITY');
 
         // setEnv('subscription-id', 'subscription-id');
+        setEnv('resource-manager-endpoint', 'https://management.azurestack.example.com');
 
         let loginConfig = new LoginConfig();
         await loginConfig.initialize();

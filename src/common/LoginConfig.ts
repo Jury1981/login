@@ -31,6 +31,7 @@ export class LoginConfig {
         this.enableAzPSSession = core.getInput('enable-AzPSSession').toLowerCase() === "true";
         this.allowNoSubscriptionsLogin = core.getInput('allow-no-subscriptions').toLowerCase() === "true";
         this.authType = core.getInput('auth-type').toUpperCase();
+        this.resourceManagerEndpointUrl = core.getInput('resource-manager-endpoint', { required: false });
 
         this.servicePrincipalId = core.getInput('client-id', { required: false });
         this.servicePrincipalSecret = null;
@@ -105,6 +106,9 @@ export class LoginConfig {
         }
         if (!this.subscriptionId && !this.allowNoSubscriptionsLogin) {
             throw new Error("Ensure 'subscription-id' is supplied or 'allow-no-subscriptions' is 'true'.");
+        }
+        if (this.environment === "azurestack" && !this.resourceManagerEndpointUrl) {
+            throw new Error("Using environment: azurestack. Ensure 'resourceManagerEndpointUrl' is supplied.");
         }
     }
 
