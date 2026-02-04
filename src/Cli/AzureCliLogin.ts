@@ -21,7 +21,7 @@ export class AzureCliLogin {
         core.debug(`Azure CLI path: ${this.azPath}`);
 
         let output: string = "";
-        const execOptions: any = {
+        const execOptions: ExecOptions = {
             listeners: {
                 stdout: (data: Buffer) => {
                     output += data.toString();
@@ -161,7 +161,7 @@ export class AzureCliLogin {
     async executeAzCliCommand(
         args: string[],
         silent?: boolean,
-        execOptions: any = {}) {
+        execOptions: ExecOptions = {}) {
         execOptions.silent = !!silent;
         await exec.exec(`"${this.azPath}"`, args, execOptions);
     }

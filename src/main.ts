@@ -8,7 +8,7 @@ async function main() {
     try {
         setUserAgent();
         const preCleanup: string = process.env.AZURE_LOGIN_PRE_CLEANUP;
-        if ('true' == preCleanup) {
+        if ('true' === preCleanup) {
             await cleanupAzCLIAccounts();
             if (core.getInput('enable-AzPSSession').toLowerCase() === "true") {
                 await cleanupAzPSAccounts();
@@ -31,8 +31,11 @@ async function main() {
         }
     }
     catch (error) {
-        core.setFailed(`Login failed with ${error}. Double check if the 'auth-type' is correct. Refer to https://github.com/Azure/login#readme for more information.`);
-        core.debug(error.stack);
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        core.setFailed(`Login failed with ${errorMessage}. Double check if the 'auth-type' is correct. Refer to https://github.com/Azure/login#readme for more information.`);
+        if (error instanceof Error && error.stack) {
+            core.debug(error.stack);
+        }
     }
 }
 
