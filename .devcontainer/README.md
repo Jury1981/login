@@ -70,19 +70,19 @@ The dev container includes a helper script that streamlines common tasks:
 
 ### Manual Commands
 
-### Build the Action
+#### Build the Action
 
 ```bash
 npm run build
 ```
 
-### Run Tests
+#### Run Tests
 
 ```bash
 npm test
 ```
 
-### Test Azure CLI
+#### Test Azure CLI
 
 ```bash
 az version
@@ -90,7 +90,7 @@ az login  # If needed
 az account show
 ```
 
-### Test PowerShell
+#### Test PowerShell
 
 ```bash
 pwsh
