@@ -10,8 +10,11 @@ async function cleanup() {
         }
     }
     catch (error) {
-        core.warning(`Login cleanup failed with ${error}. Cleanup will be skipped.`);
-        core.debug(error.stack);
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        core.warning(`Login cleanup failed with ${errorMessage}. Cleanup will be skipped.`);
+        if (error instanceof Error && error.stack) {
+            core.debug(error.stack);
+        }
     }
 }
 

@@ -2,6 +2,7 @@ import * as core from '@actions/core';
 import * as os from 'os';
 import * as path from 'path';
 import * as exec from '@actions/exec';
+import { ExecOptions } from '@actions/exec/lib/interfaces';
 import * as io from '@actions/io';
 import AzPSScriptBuilder from './AzPSScriptBuilder';
 
@@ -54,7 +55,7 @@ export class AzPSUtils {
     static async runPSScript(psScript: string): Promise<string> {
         let outputString: string = "";
         let commandStdErr = false;
-        const options: any = {
+        const options: ExecOptions = {
             silent: true,
             listeners: {
                 stdout: (data: Buffer) => {
