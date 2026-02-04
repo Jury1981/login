@@ -4,6 +4,7 @@
     "MD013": false
   },
   "ignores": [
-    "SECURITY.md"
+    "SECURITY.md",
+    "node_modules"
   ]
 }
