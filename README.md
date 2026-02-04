@@ -722,7 +722,7 @@ The dev container provides:
 2. Select "Codespaces" tab
 3. Click "Create codespace"
 
-For more details, see [.devcontainer/README.md](.devcontainer/README.md).
+For more details, see [.devcontainer/EXAMPLES.md](.devcontainer/EXAMPLES.md).
 
 ## Contributing
 
