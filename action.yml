@@ -22,6 +22,9 @@ inputs:
     description: 'Name of the environment. Supported values are azurecloud, azurestack, azureusgovernment, azurechinacloud, azuregermancloud. Default being azurecloud'
     required: false
     default: azurecloud
+  resource-manager-endpoint:
+    description: 'Required when using environment=azurestack. ARM resource manager endpoint for the Azure Stack instance.'
+    required: false
   allow-no-subscriptions:
     description: 'Set this value to true to enable support for accessing tenants without subscriptions'
     required: false

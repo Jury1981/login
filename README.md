@@ -58,6 +58,7 @@ Azure Login Action supports different ways of authentication with Azure.
 |creds|false|string||a json string for login with an Azure service principal|
 |enable-AzPSSession|false|boolean|false|if Azure PowerShell login is enabled|
 |environment|false|string|azurecloud|the Azure Cloud environment. For cloud environments other than the public cloud, the `audience` will also need to be updated.|
+|resource-manager-endpoint|false|string||required when `environment` is `azurestack`; ARM endpoint of the Azure Stack instance|
 |allow-no-subscriptions|false|boolean|false|if login without subscription is allowed|
 |audience|false|string|api://AzureADTokenExchange|the audience to get the JWT ID token from GitHub OIDC provider|
 |auth-type|false|string|SERVICE_PRINCIPAL|the auth type|
