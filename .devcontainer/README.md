@@ -38,11 +38,13 @@ This development container provides a pre-configured environment for developing 
 ### Optimized for Development
 
 - **Persistent Azure credentials** (optional): You can mount your `~/.azure` folder by adding this to `.devcontainer/devcontainer.json`:
+
   ```json
   "mounts": [
     "source=${localEnv:HOME}/.azure,target=/home/node/.azure,type=bind,consistency=cached"
   ]
   ```
+
   Note: This requires the `HOME` environment variable on your host system (Linux/Mac). Windows users should use `${localEnv:USERPROFILE}/.azure` instead.
 - **Auto-install dependencies**: `npm install` runs automatically on container creation
 - **Consistent environment**: Everyone uses the same tool versions
@@ -117,6 +119,7 @@ This dev container streamlines the development process by:
 ## Customization
 
 To add more features, edit `.devcontainer/devcontainer.json` and add features from:
+
 - [Dev Container Features](https://containers.dev/features)
 - [Microsoft Features](https://github.com/devcontainers/features)
 
@@ -135,12 +138,14 @@ By default, Azure credentials are not persisted between container rebuilds. To p
 ### Container build fails
 
 Try rebuilding without cache:
+
 - VS Code: Command Palette → `Dev Containers: Rebuild Container Without Cache`
 - CLI: `docker build --no-cache`
 
 ### npm install fails
 
 The container automatically runs `npm install` on creation. If it fails:
+
 1. Check your internet connection
 2. Rebuild the container
 3. Manually run `npm install` in the container terminal
