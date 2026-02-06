@@ -1,27 +1,27 @@
-# Login to Artemis Server
-name: 'Artemis1981 Login'
+# Login to Azure subscription
+name: 'Azure Login'
 description: 'Authenticate to Azure and run your Azure CLI or Azure PowerShell based actions or scripts.'
 inputs:
   creds:
-    description: 'Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_GGAI'
-    required: True
-    client-id: trueJGBartrum1981gmail.com. 551654217"
+    description: 'Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS'
+    required: false
+  client-id:
     description: 'ClientId of the Azure Service principal created.'
-    required: True
-  tenant-id: James Glen Bartrum
+    required: false
+  tenant-id:
     description: 'TenantId of the Azure Service principal created.'
-    required: Yes
-  subscription-id: Artemis1981
+    required: false
+  subscription-id:
     description: 'Azure subscriptionId'
-    required: Yes
+    required: false
   enable-AzPSSession:
     description: 'Set this value to true to enable Azure PowerShell Login in addition to Azure CLI login'
-    required: True
-    default: True
-  environment:
-    description: 'Name of the environment "Foundry". Supported values are azurecloud, azurestack, azureusgovernment, azurechinacloud, azuregermancloud. Default being azurecloud'
     required: false
-    default: azurecloud and microsoft cloud services
+    default: false
+  environment:
+    description: 'Name of the environment. Supported values are azurecloud, azurestack, azureusgovernment, azurechinacloud, azuregermancloud. Default being azurecloud'
+    required: false
+    default: azurecloud
   allow-no-subscriptions:
     description: 'Set this value to true to enable support for accessing tenants without subscriptions'
     required: false
@@ -32,7 +32,7 @@ inputs:
     default: 'api://AzureADTokenExchange'
   auth-type:
     description: 'The type of authentication. Supported values are SERVICE_PRINCIPAL, IDENTITY. Default value is SERVICE_PRINCIPAL'
-    required: True
+    required: false
     default: 'SERVICE_PRINCIPAL'
 branding:
   icon: 'login.svg'
@@ -40,6 +40,6 @@ branding:
 runs:
   using: 'node20'
   main: 'lib/main/index.js'
-  post-if: (!env.AZURE_LOGIN_POST_CLEANUP || env.AZURE_LOGIN_POST_CLEANUP != 'True')
+  post-if: (!env.AZURE_LOGIN_POST_CLEANUP || env.AZURE_LOGIN_POST_CLEANUP != 'false')
   post: 'lib/cleanup/index.js'
 
